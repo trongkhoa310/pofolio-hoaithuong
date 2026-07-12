@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Thương đây — Lưu Hoài Thương</title>
+<meta name="description" content="Một hành trình 10 năm theo đuổi nghệ thuật kể chuyện thương hiệu và sự tối ưu trong vận hành Marketing."/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,100..900;1,100..900&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: { extend: {
+    colors: {"primary-fixed-dim":"#ffb4ac","on-tertiary-fixed":"#061845","secondary-fixed":"#e5e2e1","on-tertiary":"#ffffff","surface-tint":"#c00015","on-tertiary-container":"#fcfaff","on-tertiary-fixed-variant":"#364572","error-container":"#ffdad6","on-secondary-fixed":"#1c1b1b","surface-container-highest":"#e4e3d7","inverse-surface":"#303129","background":"#fbfaee","on-error-container":"#93000a","primary":"#b90014","primary-container":"#e31b23","surface-container-high":"#e9e9dd","surface-container-low":"#f5f4e8","on-primary-fixed-variant":"#93000d","on-secondary":"#ffffff","surface-bright":"#fbfaee","on-primary-fixed":"#410002","surface-variant":"#e4e3d7","outline-variant":"#e7bdb8","error":"#ba1a1a","surface":"#fbfaee","on-background":"#1b1c15","secondary":"#5f5e5e","inverse-on-surface":"#f2f1e5","on-error":"#ffffff","secondary-fixed-dim":"#c8c6c5","on-secondary-container":"#636262","secondary-container":"#e2dfde","on-surface-variant":"#5d3f3c","inverse-primary":"#ffb4ac","tertiary-container":"#6372a3","tertiary-fixed":"#dbe1ff","tertiary-fixed-dim":"#b6c5fb","tertiary":"#4b5988","outline":"#926e6b","surface-container-lowest":"#ffffff","surface-container":"#efeee3","surface-dim":"#dbdbcf","on-surface":"#1b1c15","on-primary-container":"#fff9f8","on-primary":"#ffffff","primary-fixed":"#ffdad6","on-secondary-fixed-variant":"#474746"},
+    borderRadius: {"DEFAULT":"0px","lg":"0px","xl":"0px","full":"9999px"},
+    spacing: {"container-max":"1440px","margin-mobile":"16px","gutter":"24px","margin-desktop":"64px","unit":"4px"},
+    fontFamily: {"body-md":["Hanken Grotesk"],"label-bold":["Space Mono"],"headline-lg-mobile":["Anybody"],"headline-display":["Anybody"],"label-sm":["Space Mono"],"headline-md":["Anybody"],"headline-lg":["Anybody"],"body-lg":["Hanken Grotesk"]},
+    fontSize: {"body-md":["16px",{"lineHeight":"160%","fontWeight":"400"}],"label-bold":["14px",{"lineHeight":"120%","fontWeight":"700"}],"headline-lg-mobile":["40px",{"lineHeight":"110%","fontWeight":"800"}],"headline-display":["120px",{"lineHeight":"110%","letterSpacing":"-0.04em","fontWeight":"800"}],"label-sm":["12px",{"lineHeight":"120%","fontWeight":"400"}],"headline-md":["32px",{"lineHeight":"120%","fontWeight":"700"}],"headline-lg":["64px",{"lineHeight":"110%","letterSpacing":"-0.02em","fontWeight":"800"}],"body-lg":["18px",{"lineHeight":"160%","fontWeight":"400"}]}
+  }}
+}
+</script>
+<style>
+html { scroll-behavior: smooth; }
+body { background-color:#fbfaee; color:#1b1c15; }
+.material-symbols-outlined { font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; }
+.fade-in-up { opacity:0; transform:translateY(30px); transition:opacity 0.8s ease-out,transform 0.8s ease-out; }
+.fade-in-up.is-visible { opacity:1; transform:translateY(0); }
+.article-card { transition:transform 0.15s ease,box-shadow 0.15s ease; }
+.article-card:hover { transform:translate(-4px,-4px); box-shadow:8px 8px 0px #1b1c15; }
+#mobile-menu { display:none; }
+#mobile-menu.open { display:flex; }
+</style>
+<style>
+section[id] { scroll-margin-top: 80px; }
+</style>
+</head>
+<body class="font-body-md text-body-md antialiased selection:bg-primary selection:text-white min-h-screen flex flex-col">
+
+<!-- TOP BAR -->
+<div class="bg-primary text-white py-2 text-center font-label-bold text-label-bold uppercase tracking-widest hover:bg-on-background transition-colors">
+  <a class="flex items-center justify-center gap-2" href="about.html#contact">
+    Sẵn sàng hợp tác? Liên hệ với Thương <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+  </a>
+</div>
+<!-- HEADER -->
+<header class="bg-background border-b-2 border-on-background flex flex-col w-full sticky top-0 z-50">
+  <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 w-full max-w-container-max mx-auto">
+    <a class="font-headline-md text-headline-md font-extrabold text-primary uppercase tracking-tighter" href="index.html">Lưu Hoài Thương</a>
+    <nav class="hidden md:flex gap-gutter items-center">
+      <a href="index.html" class="font-label-bold text-label-bold text-on-background hover:bg-primary hover:text-on-primary transition-none px-2 py-1">Rosie here</a>
+      <a href="archive.html" class="font-label-bold text-label-bold text-on-background hover:bg-primary hover:text-on-primary transition-none px-2 py-1">Nghề nhiều chuyện</a>
+      <a href="about.html" class="font-label-bold text-label-bold text-primary border-b-2 border-primary pb-1 px-2 py-1">Thương đây</a>
+      <a href="about.html#contact" class="font-label-bold text-label-bold text-on-background hover:bg-primary hover:text-on-primary transition-none px-2 py-1">Contact</a>
+    </nav>
+    <div class="flex items-center gap-4">
+      <a href="about.html#contact" class="hidden lg:inline-flex items-center justify-center border-2 border-on-background px-6 py-2 font-label-bold text-label-bold uppercase hover:bg-primary hover:text-white hover:border-primary transition-none">Hire Me</a>
+      <button id="menu-toggle" aria-label="Menu" class="md:hidden text-primary">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="md:hidden flex-col border-t-2 border-on-background bg-background">
+    <a href="index.html" class="block px-6 py-4 font-label-bold text-label-bold uppercase border-b border-surface-dim hover:bg-primary hover:text-white transition-none">Rosie here</a>
+    <a href="archive.html" class="block px-6 py-4 font-label-bold text-label-bold uppercase border-b border-surface-dim hover:bg-primary hover:text-white transition-none">Nghề nhiều chuyện</a>
+    <a href="about.html" class="block px-6 py-4 font-label-bold text-label-bold uppercase border-b border-surface-dim hover:bg-primary hover:text-white transition-none">Thương đây</a>
+    <a href="about.html#contact" class="block px-6 py-4 font-label-bold text-label-bold uppercase border-b border-surface-dim hover:bg-primary hover:text-white transition-none">Contact</a>
+  </div>
+</header>
+
+<main class="flex-grow">
+
+  <!-- HERO -->
+  <section class="w-full pt-20 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto fade-in-up">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+      <div class="md:col-span-6 order-2 md:order-1 flex flex-col justify-center space-y-8">
+        <h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary md:hidden uppercase">Thương đây.</h1>
+        <h1 style="font-family:Anybody;font-size:clamp(60px,8vw,120px);font-weight:800;line-height:1.05;letter-spacing:-0.04em" class="text-primary hidden md:block uppercase">Thương đây.</h1>
+        <p class="font-body-lg text-body-lg text-on-background max-w-md">Một hành trình 10 năm theo đuổi nghệ thuật kể chuyện thương hiệu và sự tối ưu trong vận hành Marketing. Tôi tin vào sức mạnh của sự chân thành và tư duy chiến lược.</p>
+      </div>
+      <div class="md:col-span-6 order-1 md:order-2 mb-8 md:mb-0">
+        <div class="aspect-square w-full overflow-hidden bg-surface-container relative border-4 border-primary">
+          <img alt="Lưu Hoài Thương Portrait" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLtsJktvggmfRRz5GFRPhNFlVehQzzE_usvithz1zRy6LWjOthL8YMTPJwvq7PDuyrQOjwbnPqYYKnn2Im2NtPLIIXl4Hld3DBhMbXIsNMUX_UbTrV2gcrWxSWotWWml830Y-mUU6DnOyNIyRJLAq4-wYle1Lxr-tJaXpG0XhjKjlgE1iaG54EoqZJu1CWKgG7Rzkf_tj6VXEmUhBkNuBdxE6SXZ7iAkFDS1qnLzoilgloRDDpKx6WbbnQ"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <div class="w-full py-24 bg-surface-container px-margin-mobile md:px-margin-desktop border-y-4 border-primary fade-in-up">
+    <div class="max-w-3xl mx-auto text-center">
+      <span class="material-symbols-outlined text-6xl text-primary mb-6 block" style="font-variation-settings:'FILL' 1;">format_quote</span>
+      <blockquote class="font-headline-lg text-headline-lg text-primary leading-tight uppercase">"Marketing không chỉ là bán hàng, đó là nghệ thuật đồng cảm."</blockquote>
+    </div>
+  </div>
+
+  <!-- JOURNEY -->
+  <div class="w-full bg-primary text-on-primary border-b-4 border-on-background fade-in-up">
+    <div class="grid grid-cols-1 md:grid-cols-2">
+      <div class="p-12 md:p-16 border-b-4 md:border-b-0 md:border-r-4 border-on-background flex flex-col justify-center bg-primary">
+        <h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-primary mb-4 md:hidden uppercase">10 Năm Hành Trình</h2>
+        <h2 class="font-headline-lg text-headline-lg text-on-primary mb-4 hidden md:block uppercase">10 Năm Hành Trình</h2>
+        <p class="font-label-bold text-label-bold uppercase tracking-widest bg-on-background inline-block px-4 py-2 self-start border-2 border-on-background">Từ ý tưởng đến thực thi</p>
+      </div>
+      <div class="p-12 md:p-16 flex flex-col space-y-8 bg-on-background text-background">
+        <p class="font-body-lg text-body-lg leading-relaxed">Bắt đầu từ những con chữ đơn giản, tôi đã dành một thập kỷ lăn lộn qua các agency và in-house, nếm đủ vị đắng cay ngọt bùi của nghề. Mỗi chiến dịch là một bài học, mỗi dự án là một câu chuyện.</p>
+        <p class="font-body-md text-body-md leading-relaxed">Tôi không chỉ viết, tôi xây dựng chiến lược. Từ việc định vị thương hiệu đến tối ưu hóa quy trình vận hành đội ngũ, mục tiêu của tôi luôn là sự hiệu quả bền vững chứ không chỉ là những con số nhất thời.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERTISE -->
+  <div class="w-full py-24 bg-surface-container-low px-margin-mobile md:px-margin-desktop border-b-4 border-on-background fade-in-up">
+    <div class="max-w-container-max mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-4 border-on-background">
+        <div class="bg-surface p-12 border-b-4 md:border-b-0 md:border-r-4 border-on-background hover:bg-primary hover:text-on-primary group">
+          <span class="material-symbols-outlined text-4xl text-primary group-hover:text-on-primary mb-6 block">architecture</span>
+          <h3 class="font-headline-md text-headline-md text-on-background group-hover:text-on-primary mb-4 uppercase">Chiến lược</h3>
+          <p class="font-body-md text-body-md text-on-background group-hover:text-on-primary">Xây dựng nền tảng vững chắc cho thương hiệu, định hướng phát triển dài hạn.</p>
+        </div>
+        <div class="bg-surface p-12 border-b-4 md:border-b-0 md:border-r-4 border-on-background hover:bg-primary hover:text-on-primary group">
+          <span class="material-symbols-outlined text-4xl text-primary group-hover:text-on-primary mb-6 block">edit_document</span>
+          <h3 class="font-headline-md text-headline-md text-on-background group-hover:text-on-primary mb-4 uppercase">Nội dung</h3>
+          <p class="font-body-md text-body-md text-on-background group-hover:text-on-primary">Sáng tạo thông điệp chạm đến cảm xúc, nghệ thuật kể chuyện chân thực.</p>
+        </div>
+        <div class="bg-surface p-12 hover:bg-primary hover:text-on-primary group">
+          <span class="material-symbols-outlined text-4xl text-primary group-hover:text-on-primary mb-6 block">group</span>
+          <h3 class="font-headline-md text-headline-md text-on-background group-hover:text-on-primary mb-4 uppercase">Vận hành</h3>
+          <p class="font-body-md text-body-md text-on-background group-hover:text-on-primary">Tối ưu hóa quy trình làm việc, xây dựng và quản lý đội ngũ hiệu quả.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHILOSOPHY -->
+  <div class="w-full py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto fade-in-up">
+    <div class="flex flex-col md:flex-row items-stretch border-4 border-on-background">
+      <div class="w-full md:w-1/2 border-b-4 md:border-b-0 md:border-r-4 border-on-background">
+        <div class="aspect-[4/3] w-full" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuB5fS0Ezdy1T1S5osWTV6WgsuQn-nj7pMKd5a0Mpb_Fk5VGzQcUx0KPMhowVYs2ZOBjo_1wWUd0NM_-R_OT8vYnHEV291nQoYSd2HUO65h__zy_8SxEWbdKRnWfW6J017RiTBR_Bfm1ylAtSe0RsukblNSta9rOlIHaoVSwlFvfYqEScXEc4X64NDZj1ShN6WMY6OYmwoSJrqPeLEoeBeO9IROCrwh1BKNUikxtyGKWt_TisBW5AJXQAS7VcEkJ3ygEhKadu0HuOA');background-size:cover;background-position:center;min-height:300px"></div>
+      </div>
+      <div class="w-full md:w-1/2 flex flex-col justify-center p-12 bg-surface-bright">
+        <h3 class="font-headline-lg-mobile text-headline-lg-mobile text-primary md:hidden uppercase mb-6">Quan điểm sống</h3>
+        <h3 class="font-headline-lg text-headline-lg text-primary hidden md:block uppercase mb-6">Quan điểm sống</h3>
+        <p class="font-body-lg text-body-lg text-on-background">Công việc là một phần quan trọng, nhưng cuộc sống là bức tranh tổng thể. Tôi tìm kiếm sự cân bằng trong tĩnh lặng, đọc sách, và những cuộc trò chuyện sâu sắc.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="contact" class="w-full py-32 bg-primary text-on-primary px-margin-mobile md:px-margin-desktop text-center border-y-4 border-on-background fade-in-up">
+    <div class="max-w-2xl mx-auto flex flex-col items-center space-y-8">
+      <h2 class="font-headline-lg-mobile text-headline-lg-mobile md:hidden text-on-primary uppercase">Sẵn sàng trò chuyện?</h2>
+      <h2 class="font-headline-lg text-headline-lg hidden md:block text-on-primary uppercase">Sẵn sàng trò chuyện?</h2>
+      <p class="font-body-lg text-body-lg text-on-primary">Nếu bạn có một ý tưởng cần thảo luận, hoặc đơn giản là muốn chia sẻ về một cuốn sách hay.</p>
+      <a class="inline-flex items-center gap-2 bg-on-background text-primary px-8 py-4 font-label-bold text-label-bold uppercase tracking-wider hover:bg-background border-2 border-on-background transition-colors" href="mailto:hello@luuhoaithuong.com">
+        <span class="material-symbols-outlined text-xl">mail</span>
+        Gửi Email cho Thương
+      </a>
+      <div class="flex flex-wrap gap-6 justify-center pt-4">
+        <span class="font-label-bold text-label-bold text-on-primary underline decoration-2 underline-offset-4 opacity-70 uppercase">LinkedIn</span>
+        <span class="font-label-bold text-label-bold text-on-primary underline decoration-2 underline-offset-4 opacity-70 uppercase">Instagram</span>
+        <span class="font-label-bold text-label-bold text-on-primary underline decoration-2 underline-offset-4 opacity-70 uppercase">Behance</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="bg-on-background border-t-2 border-on-background mt-auto">
+  <div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-12 w-full max-w-container-max mx-auto gap-8">
+    <span class="font-headline-md text-headline-md text-primary-fixed-dim uppercase tracking-tighter">Lưu Hoài Thương</span>
+    <nav class="flex gap-6 flex-wrap justify-center">
+      <a href="index.html"        class="font-label-bold text-label-bold text-surface-container-highest hover:text-primary transition-none underline decoration-2 underline-offset-4 uppercase">Home</a>
+      <a href="archive.html"       class="font-label-bold text-label-bold text-surface-container-highest hover:text-primary transition-none underline decoration-2 underline-offset-4 uppercase">Nghề nhiều chuyện</a>
+      <a href="about.html"         class="font-label-bold text-label-bold text-surface-container-highest hover:text-primary transition-none underline decoration-2 underline-offset-4 uppercase">Thương đây</a>
+      <a href="about.html#contact" class="font-label-bold text-label-bold text-surface-container-highest hover:text-primary transition-none underline decoration-2 underline-offset-4 uppercase">Contact</a>
+    </nav>
+    <p class="font-body-md text-body-md text-primary-fixed-dim text-center md:text-right">© 2026 Lưu Hoài Thương. Built for Impact.</p>
+  </div>
+</footer>
+<script>
+// Mobile menu
+const toggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+if(toggle){ toggle.addEventListener('click', () => mobileMenu.classList.toggle('open')); }
+// Fade-in
+const obs = new IntersectionObserver((entries, o) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('is-visible'); o.unobserve(e.target); } });
+}, {threshold:0.08});
+document.querySelectorAll('.fade-in-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
