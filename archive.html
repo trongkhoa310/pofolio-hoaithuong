@@ -3,18 +3,15 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Nghề Nhiều Chuyện — Lưu Hoài Thương</title>
-<meta name="description" content="Những mẩu chuyện nhỏ, đúc kết lớn từ hành trình theo đuổi Marketing và thấu hiểu con người."/>
 <link rel="icon" type="image/png" href="favicon.png"/>
 <link rel="apple-touch-icon" href="favicon.png"/>
+<title>Nghề Nhiều Chuyện — Lưu Hoài Thương</title>
+<meta name="description" content="Những mẩu chuyện nhỏ, đúc kết lớn từ hành trình theo đuổi Marketing và thấu hiểu con người."/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,100..900;1,100..900&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+<script>
 tailwind.config = {
-  darkMode: "class",
   theme: { extend: {
     colors: {
       "primary": "#b90014", "surface": "#fbfaee", "on-background": "#1b1c15",
@@ -22,24 +19,68 @@ tailwind.config = {
       "primary-fixed-dim": "#ffb4ac", "surface-dim": "#dbdbcf"
     },
     fontFamily: {
-      "body-md": ["Hanken Grotesk"], "label-bold": ["Space Mono"],
-      "headline-md": ["Anybody"], "body-lg": ["Hanken Grotesk"]
+      "body-md": ["Hanken Grotesk", "sans-serif"],
+      "label-bold": ["Space Mono", "monospace"],
+      "headline-md": ["Anybody", "sans-serif"]
     }
   }}
 }
 </script>
 <style>
+*, *::before, *::after { box-sizing: border-box; }
 body { background-color:#fbfaee; color:#1b1c15; font-family:'Hanken Grotesk',sans-serif; }
-.material-symbols-outlined { font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; }
-.fade-in-up { opacity:0; transform:translateY(30px); transition:opacity 0.7s ease-out,transform 0.7s ease-out; }
+.material-symbols-outlined { font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; vertical-align:middle; }
+.fade-in-up { opacity:0; transform:translateY(24px); transition:opacity 0.6s ease-out,transform 0.6s ease-out; }
 .fade-in-up.is-visible { opacity:1; transform:translateY(0); }
 #mobile-menu { display:none; }
 #mobile-menu.open { display:flex; }
-.filter-btn { transition: all 0.15s ease; }
+.filter-btn { cursor:pointer; transition:all 0.12s ease; }
 .filter-btn.active { background:#1b1c15; color:#fff; }
-.archive-card { display:flex; flex-direction:column; }
-.archive-card:hover { transform:translate(-4px,-4px); box-shadow: 8px 8px 0px #1b1c15; }
-.archive-card { transition: transform 0.15s ease, box-shadow 0.15s ease; }
+/* Card styles — equal height columns, equal image heights */
+#archive-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+@media(min-width:768px){ #archive-grid { grid-template-columns: repeat(2, 1fr); } }
+@media(min-width:1024px){ #archive-grid { grid-template-columns: repeat(3, 1fr); } }
+.archive-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 4px solid #1b1c15;
+  background: #fbfaee;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.archive-card:hover { transform:translate(-4px,-4px); box-shadow:8px 8px 0 #1b1c15; }
+/* Fixed image container — always same height */
+.card-img-wrap {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-bottom: 4px solid #1b1c15;
+  flex-shrink: 0;
+}
+.card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  filter: grayscale(100%);
+}
+.archive-card:hover .card-img-wrap img { transform: scale(1.06); filter: grayscale(0%); }
+.card-body { padding: 1.25rem; display:flex; flex-direction:column; flex-grow:1; }
+.card-meta { display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #1b1c15; padding-bottom:0.75rem; margin-bottom:0.75rem; }
+.card-title { font-family:'Anybody',sans-serif; font-weight:800; font-size:1.1rem; line-height:1.25; text-transform:uppercase; color:#1b1c15; transition:color 0.15s; margin-bottom:0.5rem; }
+.archive-card:hover .card-title { color:#b90014; }
+.card-summary { font-size:0.875rem; line-height:1.6; color:#1b1c15; flex-grow:1;
+  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+.card-link { display:flex; align-items:center; gap:4px; font-family:'Space Mono',monospace; font-size:0.7rem; text-transform:uppercase; color:#b90014; margin-top:1rem; padding-top:0.75rem; border-top:2px solid #1b1c15; }
+.card-link:hover { color:#1b1c15; }
+@keyframes spin { to { transform:rotate(360deg); } }
 </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col">
@@ -47,15 +88,15 @@ body { background-color:#fbfaee; color:#1b1c15; font-family:'Hanken Grotesk',san
 <!-- HEADER -->
 <header class="bg-background border-b-2 border-on-background flex flex-col w-full sticky top-0 z-50">
   <div class="flex justify-between items-center px-4 md:px-16 py-4 w-full max-w-7xl mx-auto">
-    <a class="font-headline-md font-extrabold text-2xl text-primary uppercase tracking-tighter" style="font-family:Anybody,sans-serif" href="index.html">Lưu Hoài Thương</a>
+    <a style="font-family:Anybody,sans-serif" class="font-extrabold text-2xl text-primary uppercase tracking-tighter" href="index.html">Lưu Hoài Thương</a>
     <nav class="hidden md:flex gap-6 items-center">
-      <a href="index.html" class="font-mono text-sm uppercase hover:text-primary transition-none">Rosie here</a>
+      <a href="index.html" class="font-mono text-sm uppercase hover:text-primary">Rosie here</a>
       <a href="archive.html" class="font-mono text-sm uppercase text-primary border-b-2 border-primary pb-1">Nghề nhiều chuyện</a>
-      <a href="about.html" class="font-mono text-sm uppercase hover:text-primary transition-none">Thương đây</a>
-      <a href="about.html#contact" class="font-mono text-sm uppercase hover:text-primary transition-none">Contact</a>
+      <a href="about.html" class="font-mono text-sm uppercase hover:text-primary">Thương đây</a>
+      <a href="about.html#contact" class="font-mono text-sm uppercase hover:text-primary">Contact</a>
     </nav>
     <div class="flex items-center gap-4">
-      <a href="about.html#contact" class="hidden lg:inline-flex items-center border-2 border-on-background px-6 py-2 font-mono text-sm uppercase hover:bg-primary hover:text-white hover:border-primary transition-none">Hire Me</a>
+      <a href="about.html#contact" class="hidden lg:inline-flex items-center border-2 border-on-background px-6 py-2 font-mono text-sm uppercase hover:bg-primary hover:text-white transition-none">Hire Me</a>
       <button id="menu-toggle" aria-label="Menu" class="md:hidden text-primary">
         <span class="material-symbols-outlined">menu</span>
       </button>
@@ -73,26 +114,24 @@ body { background-color:#fbfaee; color:#1b1c15; font-family:'Hanken Grotesk',san
   <!-- HERO -->
   <section class="px-4 md:px-16 max-w-7xl mx-auto py-12 md:py-20 text-center border-b-4 border-on-background fade-in-up">
     <h1 style="font-family:Anybody,sans-serif;font-size:clamp(48px,10vw,120px);font-weight:800;line-height:1.0;letter-spacing:-0.04em" class="text-primary mb-6 uppercase">Nghề<br>nhiều chuyện</h1>
-    <p class="text-lg text-on-background max-w-2xl mx-auto border-t-2 border-b-2 border-on-background py-4" style="font-family:'Hanken Grotesk',sans-serif">
-      Những mẩu chuyện nhỏ, đúc kết lớn từ hành trình theo đuổi Marketing và thấu hiểu con người. Nơi tôi chia sẻ về nghề, về đời, và những góc nhìn tĩnh lặng giữa thế giới ồn ào.
+    <p class="text-lg text-on-background max-w-2xl mx-auto border-t-2 border-b-2 border-on-background py-4">
+      Những mẩu chuyện nhỏ, đúc kết lớn từ hành trình theo đuổi Marketing và thấu hiểu con người.
     </p>
   </section>
 
-  <!-- FILTERS -->
-  <div class="px-4 md:px-16 max-w-7xl mx-auto py-8 border-b-2 border-surface-dim">
-    <div class="flex flex-wrap gap-3 justify-center md:justify-start" id="filter-container">
-      <button data-filter="all" class="filter-btn active font-mono text-sm uppercase px-4 py-2 border-2 border-on-background cursor-pointer">Tất cả</button>
-      <!-- Các nút filter theo category WP sẽ được thêm tự động -->
+  <!-- FILTERS — được render tự động từ categories WordPress -->
+  <div class="px-4 md:px-16 max-w-7xl mx-auto py-6 border-b-2 border-surface-dim">
+    <div class="flex flex-wrap gap-3" id="filter-container">
+      <button data-filter="all" class="filter-btn active font-mono text-sm uppercase px-4 py-2 border-2 border-on-background">Tất cả</button>
     </div>
   </div>
 
   <!-- GRID -->
-  <div class="px-4 md:px-16 max-w-7xl mx-auto py-12 pb-24">
-    <div id="archive-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Loading state -->
-      <div class="col-span-full flex flex-col items-center justify-center py-24 gap-4">
-        <div style="width:48px;height:48px;border:4px solid #1b1c15;border-top-color:#b90014;border-radius:50%;animation:spin 0.8s linear infinite"></div>
-        <p class="font-mono text-sm uppercase text-on-background">Đang đồng bộ dữ liệu từ WordPress...</p>
+  <div class="px-4 md:px-16 max-w-7xl mx-auto py-10 pb-24">
+    <div id="archive-grid">
+      <div style="grid-column:1/-1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6rem 0;gap:1rem;">
+        <div style="width:44px;height:44px;border:4px solid #1b1c15;border-top-color:#b90014;border-radius:50%;animation:spin 0.8s linear infinite"></div>
+        <p style="font-family:'Space Mono',monospace;font-size:0.75rem;text-transform:uppercase;">Đang đồng bộ dữ liệu từ WordPress...</p>
       </div>
     </div>
   </div>
@@ -100,7 +139,7 @@ body { background-color:#fbfaee; color:#1b1c15; font-family:'Hanken Grotesk',san
 
 <footer class="bg-on-background border-t-2 border-on-background mt-auto">
   <div class="flex flex-col md:flex-row justify-between items-center px-4 md:px-16 py-12 max-w-7xl mx-auto gap-8">
-    <span style="font-family:Anybody,sans-serif" class="text-2xl font-extrabold uppercase tracking-tighter text-primary-fixed-dim" style="color:#ffb4ac">Lưu Hoài Thương</span>
+    <span style="font-family:Anybody,sans-serif;color:#ffb4ac" class="text-2xl font-extrabold uppercase tracking-tighter">Lưu Hoài Thương</span>
     <nav class="flex gap-6 flex-wrap justify-center">
       <a href="index.html" class="font-mono text-sm text-gray-400 hover:text-primary uppercase">Home</a>
       <a href="archive.html" class="font-mono text-sm text-gray-400 hover:text-primary uppercase">Nghề nhiều chuyện</a>
@@ -111,143 +150,114 @@ body { background-color:#fbfaee; color:#1b1c15; font-family:'Hanken Grotesk',san
   </div>
 </footer>
 
-<style>
-@keyframes spin { to { transform: rotate(360deg); } }
-</style>
-
 <script>
 let allPosts = [];
 let activeFilter = 'all';
 
-// Decode HTML entities
 function decodeHTML(html) {
-  const txt = document.createElement('textarea');
-  txt.innerHTML = html;
-  return txt.value;
+  const t = document.createElement('textarea');
+  t.innerHTML = html; return t.value;
 }
-
-// Lấy excerpt sạch
 function stripHTML(html) {
-  const div = document.createElement('div');
-  div.innerHTML = html || '';
-  return (div.textContent || div.innerText || '').trim().slice(0, 160);
+  const d = document.createElement('div');
+  d.innerHTML = html || '';
+  return (d.textContent || d.innerText || '').trim().slice(0, 160);
 }
-
-// Format ngày Việt Nam
 function formatDate(dateStr) {
   const d = new Date(dateStr);
-  return `${d.getDate()} Thg ${d.getMonth() + 1}, ${d.getFullYear()}`;
+  return `${d.getDate()} Thg ${d.getMonth()+1}, ${d.getFullYear()}`;
 }
 
-// Render filter buttons từ categories thực tế
 function renderFilters(categories) {
-  const container = document.getElementById('filter-container');
-  // Xóa hết nút cũ trừ "Tất cả"
-  container.innerHTML = '<button data-filter="all" class="filter-btn active font-mono text-sm uppercase px-4 py-2 border-2 border-on-background cursor-pointer bg-on-background text-white">Tất cả</button>';
-
+  const c = document.getElementById('filter-container');
+  // Giữ nút "Tất cả"
+  c.innerHTML = '<button data-filter="all" class="filter-btn active font-mono text-sm uppercase px-4 py-2 border-2 border-on-background" style="background:#1b1c15;color:#fff">Tất cả</button>';
   categories.forEach(cat => {
-    const btn = document.createElement('button');
-    btn.dataset.filter = cat.slug;
-    btn.className = 'filter-btn font-mono text-sm uppercase px-4 py-2 border-2 border-on-background cursor-pointer hover:bg-primary hover:text-white';
-    btn.textContent = cat.name;
-    container.appendChild(btn);
+    const b = document.createElement('button');
+    b.dataset.filter = cat.slug;
+    b.className = 'filter-btn font-mono text-sm uppercase px-4 py-2 border-2 border-on-background';
+    b.textContent = cat.name;
+    c.appendChild(b);
   });
-
-  // Gắn lại event cho tất cả nút
-  container.querySelectorAll('.filter-btn').forEach(btn => {
+  c.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      container.querySelectorAll('.filter-btn').forEach(b => {
-        b.classList.remove('active', 'bg-on-background', 'text-white');
+      c.querySelectorAll('.filter-btn').forEach(b => {
+        b.style.background = '';
+        b.style.color = '';
+        b.classList.remove('active');
       });
-      btn.classList.add('active', 'bg-on-background', 'text-white');
+      btn.style.background = '#1b1c15';
+      btn.style.color = '#fff';
+      btn.classList.add('active');
       activeFilter = btn.dataset.filter;
       applyFilter(activeFilter);
     });
   });
 }
 
-// Lọc bài theo category
 function applyFilter(filter) {
   document.querySelectorAll('.archive-card').forEach(card => {
-    const cats = card.dataset.categories ? card.dataset.categories.split(',') : [];
-    const show = filter === 'all' || cats.includes(filter);
-    card.style.display = show ? 'flex' : 'none';
+    const cats = (card.dataset.catSlugs || '').split(',').filter(Boolean);
+    card.parentElement.style.display = (filter === 'all' || cats.includes(filter)) ? '' : 'none';
   });
 }
 
-// Render lưới bài viết
 function renderGrid() {
   const grid = document.getElementById('archive-grid');
-
   if (!allPosts.length) {
-    grid.innerHTML = '<p class="col-span-full text-center font-mono text-sm uppercase py-20 text-primary">Chưa có bài viết nào.</p>';
+    grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;font-family:Space Mono,monospace;font-size:.75rem;text-transform:uppercase;padding:5rem 0;color:#b90014">Chưa có bài viết nào.</p>';
     return;
   }
-
   grid.innerHTML = allPosts.map(p => `
-    <article
-      data-categories="${p.catSlugs.join(',')}"
-      class="archive-card border-4 border-on-background bg-surface fade-in-up"
-    >
-      <div class="aspect-[4/3] w-full overflow-hidden border-b-4 border-on-background">
-        <a href="post.html?slug=${p.slug}" class="w-full h-full block overflow-hidden">
-          <img
-            class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 hover:scale-105"
-            src="${p.image}"
-            alt="${p.title}"
-            loading="lazy"
-            onerror="this.src='https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=800&auto=format'"
-          />
-        </a>
-      </div>
-      <div class="p-5 flex flex-col gap-3 flex-grow">
-        <div class="flex items-center justify-between border-b-2 border-on-background pb-3">
-          <span class="font-mono text-xs text-primary uppercase">${p.catLabels.join(', ')}</span>
-          <span class="font-mono text-xs text-on-background">${p.date}</span>
+    <div>
+      <article class="archive-card fade-in-up" data-cat-slugs="${p.catSlugs.join(',')}">
+        <div class="card-img-wrap">
+          <a href="post.html?slug=${p.slug}">
+            <img src="${p.image}" alt="${p.title}" loading="lazy"
+              onerror="this.src='https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=800&auto=format'"/>
+          </a>
         </div>
-        <a href="post.html?slug=${p.slug}" class="block group flex-grow">
-          <h2 style="font-family:Anybody,sans-serif" class="text-xl font-bold text-on-background uppercase group-hover:text-primary transition-colors leading-tight mb-2">${p.title}</h2>
-          <p class="text-sm text-on-background line-clamp-3 leading-relaxed">${p.summary}</p>
-        </a>
-        <a href="post.html?slug=${p.slug}" class="font-mono text-xs uppercase text-primary hover:text-on-background flex items-center gap-1 mt-auto pt-3 border-t-2 border-on-background">
-          Đọc tiếp <span class="material-symbols-outlined text-base">arrow_forward</span>
-        </a>
-      </div>
-    </article>
+        <div class="card-body">
+          <div class="card-meta">
+            <span style="font-family:'Space Mono',monospace;font-size:.7rem;color:#b90014;text-transform:uppercase;font-weight:700">${p.catLabels.join(', ')}</span>
+            <span style="font-family:'Space Mono',monospace;font-size:.7rem;text-transform:uppercase">${p.date}</span>
+          </div>
+          <a href="post.html?slug=${p.slug}">
+            <h2 class="card-title">${p.title}</h2>
+          </a>
+          <p class="card-summary">${p.summary}</p>
+          <a href="post.html?slug=${p.slug}" class="card-link">
+            Đọc tiếp <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+          </a>
+        </div>
+      </article>
+    </div>
   `).join('');
 
-  // Fade-in observer
+  // Fade in
   const obs = new IntersectionObserver((entries, o) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('is-visible');
-        o.unobserve(e.target);
-      }
-    });
+    entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('is-visible');o.unobserve(e.target);} });
   }, { threshold: 0.05 });
   document.querySelectorAll('.fade-in-up').forEach(el => obs.observe(el));
 
   applyFilter(activeFilter);
 }
 
-// Fetch bài viết + categories từ WordPress API
 async function fetchPosts() {
-  const grid = document.getElementById('archive-grid');
   try {
     const [postsRes, catsRes] = await Promise.all([
       fetch('https://public-api.wordpress.com/rest/v1.1/sites/hoaithuongluu.wordpress.com/posts?number=30'),
       fetch('https://public-api.wordpress.com/rest/v1.1/sites/hoaithuongluu.wordpress.com/categories')
     ]);
-
     const postsData = await postsRes.json();
-    const catsData = await catsRes.json();
+    const catsData  = await catsRes.json();
 
-    // Render filter buttons từ categories thực tế
+    // Chỉ lấy categories có bài — dùng làm filter
     const categories = (catsData.categories || []).filter(c => c.post_count > 0);
     renderFilters(categories);
 
-    // Map posts
     allPosts = postsData.posts.map(p => {
+      // Dùng CATEGORIES (không phải tags) để filter
       const catEntries = Object.values(p.categories || {});
       return {
         slug: p.slug,
@@ -262,26 +272,22 @@ async function fetchPosts() {
 
     renderGrid();
   } catch (err) {
-    console.error(err);
-    grid.innerHTML = `<div class="col-span-full text-center py-24">
-      <p class="font-mono text-sm uppercase text-primary">Lỗi kết nối WordPress API!</p>
-      <p class="font-mono text-xs text-gray-500 mt-2">${err.message}</p>
-    </div>`;
+    document.getElementById('archive-grid').innerHTML =
+      `<div style="grid-column:1/-1;text-align:center;padding:4rem 0">
+        <p style="font-family:'Space Mono',monospace;font-size:.75rem;text-transform:uppercase;color:#b90014">Lỗi kết nối WordPress API</p>
+        <p style="font-size:.75rem;color:#888;margin-top:.5rem">${err.message}</p>
+      </div>`;
   }
 }
 
 fetchPosts();
 
-// Mobile menu
-const toggle = document.getElementById('menu-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
-if (toggle) toggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+document.getElementById('menu-toggle')?.addEventListener('click', () =>
+  document.getElementById('mobile-menu').classList.toggle('open'));
 
-// Fade-in initial elements
-const obs2 = new IntersectionObserver((entries, o) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); o.unobserve(e.target); } });
-}, { threshold: 0.05 });
-document.querySelectorAll('.fade-in-up').forEach(el => obs2.observe(el));
+// Fade-in cho hero section
+const obs2 = new IntersectionObserver((en,o)=>{ en.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');o.unobserve(e.target);}});},{threshold:0.05});
+document.querySelectorAll('.fade-in-up').forEach(el=>obs2.observe(el));
 </script>
 </body>
 </html>
