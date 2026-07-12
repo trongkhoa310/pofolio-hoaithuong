@@ -116,15 +116,15 @@ body { background-color:#fbfaee; color:#1b1c15; }
     </div>
   </section>
 
-  <!-- RECENT POSTS -->
+  <!-- RECENT POSTS (dynamic from WP API) -->
   <section class="mb-24 fade-in-up" style="transition-delay:200ms">
     <div class="flex justify-between items-end mb-10 border-b-4 border-on-background pb-4">
-      <h2 class="text-headline-lg font-headline-lg text-primary uppercase">Recent Posts</h2>
+      <h2 class="text-headline-lg font-headline-lg text-primary uppercase">Bài Viết Mới Nhất</h2>
       <a href="archive.html" class="text-label-bold font-label-bold uppercase text-on-background hover:text-primary transition-colors flex items-center gap-1 group">
         Xem tất cả <span class="material-symbols-outlined text-[20px] transition-transform group-hover:translate-x-1">arrow_forward</span>
       </a>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div id="recent-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
       <article class="group article-card bg-surface border-4 border-on-background overflow-hidden flex flex-col h-full">
         <div class="aspect-[1.79] overflow-hidden bg-surface-variant relative border-b-4 border-on-background">
           <img alt="Google Sheet" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida/AP1WRLtO6NqodhS-ZVLkE8qwmVfWyCU_lDTkllpoRRPEsn-5p39ZURqVhIzonEgGJCGhYfofLu4urxCchlge8FqnH7kYBMR1VjIGyWxDL31L5aGlZ453ZXRPMM1aLJuM6BMQVhLjFhafpLIWz3H6zxqVsbjrwLOL7BcJoAnAoK5rc27aCSTXrTfo974R1dCzUFNrE3MBhFLO7aZFPwfw0IOkTd3iPuJBQ5r7i404H7ol6yHJaQZOGSpOOjDQ"/>
@@ -155,26 +155,7 @@ body { background-color:#fbfaee; color:#1b1c15; }
           <p class="text-label-bold font-label-bold text-secondary mt-auto border-t-2 border-on-background pt-4">11 THÁNG 7, 2026</p>
         </div>
       </article>
-      <article class="group article-card bg-surface border-4 border-on-background overflow-hidden flex flex-col h-full">
-        <div class="aspect-[1.50] overflow-hidden bg-surface-variant relative border-b-4 border-on-background">
-          <img alt="Lạm phát AI" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida/AP1WRLt6ZUj1BbaBmysM6fVkFt-JxwEuUn66xUQwLeSp_HMdZdL0yEUciLzNJHWB85uja8hjzRekD4PeA7e4jbZ8PfFPqKCqKcplk9elsW9BfrML1uSV1COXYIiPloFcBx5UR6jfv0U-hafW3Uz3603j6tDXmMM0Mh6p5INC5LTGnxS4C1WaulgS8sUx-oRVJ3TSR9pwj2B4PFjX2fXtmrooHGmRWdesakMa32jniNzexENcTQRUsM3rkmso"/>
-          <div class="absolute top-0 left-0 bg-primary text-white px-3 py-2 text-label-bold uppercase tracking-wider border-r-4 border-b-4 border-on-background">Tech</div>
-        </div>
-        <div class="p-6 flex-1 flex flex-col bg-surface">
-          <h3 class="text-headline-md font-headline-md text-on-background leading-tight mb-4 group-hover:text-primary uppercase">Lạm Phát AI: Vật Tế Thần Hoàn Hảo Cho Cuộc Đại Thanh Trừng Nhân Sự Toàn Cầu</h3>
-          <p class="text-label-bold font-label-bold text-secondary mt-auto border-t-2 border-on-background pt-4">11 THÁNG 7, 2026</p>
-        </div>
-      </article>
-      <article class="group article-card bg-surface border-4 border-on-background overflow-hidden flex flex-col h-full md:col-span-2 lg:col-span-1">
-        <div class="aspect-[1.54] overflow-hidden bg-surface-variant relative border-b-4 border-on-background">
-          <img alt="Vẽ voi" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida/AP1WRLsSU9XtFq1YV5R0hWg9jkjQPg1QlBzEx7tLOT6Nz64MXa26TD-QWtv2eLXkO89CtWgQCiGVA2nJeMHuLNRPx9NxTozDd1riWiIY_wJFX8NsjeZd9oX7yOqHX_8gKy3xA56MT01xBz0hqQHuqETP_vdf2iTIKW4xt23JQnp0OX1SOf56zttXhlayYYjOsgQKrpAE1NYuNhGeXl1L0qAkKu2X-tqdw8VMYxtvRynUayqjWbjfOj2xQPHB"/>
-          <div class="absolute top-0 left-0 bg-primary text-white px-3 py-2 text-label-bold uppercase tracking-wider border-r-4 border-b-4 border-on-background">Story</div>
-        </div>
-        <div class="p-6 flex-1 flex flex-col bg-surface">
-          <h3 class="text-headline-md font-headline-md text-on-background leading-tight mb-4 group-hover:text-primary uppercase">Câu chuyện "vẽ voi"</h3>
-          <p class="text-label-bold font-label-bold text-secondary mt-auto border-t-2 border-on-background pt-4">11 THÁNG 7, 2026</p>
-        </div>
-      </article>
+      <!-- Bài viết sẽ được load từ WordPress -->
     </div>
   </section>
 
@@ -192,6 +173,21 @@ body { background-color:#fbfaee; color:#1b1c15; }
     <p class="font-body-md text-body-md text-primary-fixed-dim text-center md:text-right">© 2026 Lưu Hoài Thương. Built for Impact.</p>
   </div>
 </footer>
+<style>
+/* Card image — fixed height, always equal */
+.rc-img-wrap { width:100%; height:200px; overflow:hidden; border-bottom:4px solid #1b1c15; flex-shrink:0; }
+.rc-img-wrap img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; filter:grayscale(100%); transition:filter .5s,transform .5s; }
+.rc-card:hover .rc-img-wrap img { filter:grayscale(0%); transform:scale(1.06); }
+/* Card body — fixed title 2 lines, summary 3 lines */
+.rc-title { font-family:'Anybody',sans-serif; font-size:1.05rem; font-weight:800; line-height:1.25; text-transform:uppercase; color:#1b1c15; margin-bottom:.5rem;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; min-height:2.625rem; }
+.rc-card:hover .rc-title { color:#b90014; }
+.rc-summary { font-size:.875rem; line-height:1.65; text-align:justify; color:#1b1c15;
+  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; min-height:4.35rem; flex-grow:1; }
+.rc-card { border:4px solid #1b1c15; background:#fbfaee; display:flex; flex-direction:column; transition:transform .15s,box-shadow .15s; }
+.rc-card:hover { transform:translate(-4px,-4px); box-shadow:8px 8px 0 #1b1c15; }
+@keyframes spin2{to{transform:rotate(360deg)}}
+</style>
 <script>
 // Mobile menu
 const toggle = document.getElementById('menu-toggle');
@@ -202,6 +198,52 @@ const obs = new IntersectionObserver((entries, o) => {
   entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('is-visible'); o.unobserve(e.target); } });
 }, {threshold:0.08});
 document.querySelectorAll('.fade-in-up').forEach(el => obs.observe(el));
+
+// Fetch 3 bài gần nhất từ WordPress
+function decodeHTML(h){const t=document.createElement('textarea');t.innerHTML=h;return t.value;}
+function stripHTML(h){const d=document.createElement('div');d.innerHTML=h||'';return(d.textContent||d.innerText||'').trim();}
+function fmtDate(s){const d=new Date(s);return `${d.getDate()} Thg ${d.getMonth()+1}, ${d.getFullYear()}`;}
+
+async function loadRecent(){
+  const grid = document.getElementById('recent-grid');
+  grid.innerHTML = '<div style="grid-column:1/-1;display:flex;justify-content:center;padding:3rem 0"><div style="width:36px;height:36px;border:4px solid #1b1c15;border-top-color:#b90014;border-radius:50%;animation:spin2 .8s linear infinite"></div></div>';
+  try {
+    const res = await fetch('https://public-api.wordpress.com/rest/v1.1/sites/hoaithuongluu.wordpress.com/posts?number=3');
+    const data = await res.json();
+    grid.innerHTML = data.posts.map(p => {
+      const catEntries = Object.values(p.categories||{});
+      const catLabel = catEntries.length ? catEntries[0].name : 'Bài Viết';
+      const img = p.featured_image || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=800&auto=format';
+      const title = decodeHTML(p.title);
+      const summary = stripHTML(p.excerpt);
+      return `
+        <article class="rc-card">
+          <div class="rc-img-wrap">
+            <a href="post.html?slug=${p.slug}">
+              <img src="${img}" alt="${title}" loading="lazy"
+                onerror="this.src='https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=800&auto=format'"/>
+            </a>
+          </div>
+          <div style="padding:1.25rem;display:flex;flex-direction:column;flex-grow:1">
+            <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #1b1c15;padding-bottom:.6rem;margin-bottom:.75rem">
+              <span style="font-family:'Space Mono',monospace;font-size:.65rem;color:#b90014;text-transform:uppercase;font-weight:700">${catLabel}</span>
+              <span style="font-family:'Space Mono',monospace;font-size:.65rem;text-transform:uppercase">${fmtDate(p.date)}</span>
+            </div>
+            <a href="post.html?slug=${p.slug}">
+              <h3 class="rc-title">${title}</h3>
+            </a>
+            <p class="rc-summary">${summary}</p>
+            <a href="post.html?slug=${p.slug}" style="font-family:'Space Mono',monospace;font-size:.7rem;text-transform:uppercase;color:#b90014;display:flex;align-items:center;gap:4px;margin-top:1rem;padding-top:.75rem;border-top:2px solid #1b1c15">
+              Đọc tiếp <span class="material-symbols-outlined" style="font-size:15px">arrow_forward</span>
+            </a>
+          </div>
+        </article>`;
+    }).join('');
+  } catch(e) {
+    grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;font-family:Space Mono,monospace;font-size:.75rem;text-transform:uppercase;padding:3rem;color:#b90014">Không thể tải bài viết</p>';
+  }
+}
+loadRecent();
 </script>
 </body>
 </html>
