@@ -36,64 +36,127 @@ body { background-color:#fbfaee; color:#1b1c15; font-family:'Hanken Grotesk',san
 #mobile-menu.open { display:flex; }
 .filter-btn { cursor:pointer; transition:all 0.12s ease; }
 .filter-btn.active { background:#1b1c15; color:#fff; }
-/* Card grid — stretch rows so all cards in a row are equal height */
+/* ===== THUMBNAIL CARD STYLE ===== */
 #archive-grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 2rem;
+  gap: 1.75rem;
   align-items: stretch;
 }
-@media(min-width:768px){ #archive-grid { grid-template-columns: repeat(2, 1fr); } }
+@media(min-width:640px){ #archive-grid { grid-template-columns: repeat(2, 1fr); } }
 @media(min-width:1024px){ #archive-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* Card = thumbnail, giống YouTube */
 .archive-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  position: relative;
+  display: block;
+  height: 0;
+  padding-bottom: 62%; /* Tỷ lệ 16:10, giống thumbnail */
   border: 4px solid #1b1c15;
-  background: #fbfaee;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-.archive-card:hover { transform:translate(-4px,-4px); box-shadow:8px 8px 0 #1b1c15; }
-/* Fixed image container — always same height */
-.card-img-wrap {
-  width: 100%;
-  height: 210px;
   overflow: hidden;
-  border-bottom: 4px solid #1b1c15;
-  flex-shrink: 0;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+  background: #1b1c15;
 }
-.card-img-wrap img {
+.archive-card:hover {
+  transform: translate(-5px, -5px);
+  box-shadow: 10px 10px 0 #b90014;
+}
+
+/* Ảnh nền */
+.card-bg-img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center;
+  transition: transform 0.5s ease, filter 0.4s ease;
+  filter: grayscale(20%) brightness(0.75);
   display: block;
-  transition: transform 0.5s ease, filter 0.5s ease;
-  filter: grayscale(100%);
 }
-.archive-card:hover .card-img-wrap img { transform: scale(1.06); filter: grayscale(0%); }
-.card-body { padding: 1.25rem; display:flex; flex-direction:column; flex-grow:1; }
-.card-meta { display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #1b1c15; padding-bottom:0.6rem; margin-bottom:0.75rem; flex-shrink:0; }
-/* Title: cố định 3 dòng, luôn bằng nhau */
-.card-title {
-  font-family:'Anybody',sans-serif; font-weight:800; font-size:1rem;
-  line-height:1.3; text-transform:uppercase; color:#1b1c15;
-  transition:color 0.15s; margin-bottom:0.6rem;
-  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
-  min-height: calc(1rem * 1.3 * 3); /* 3 dòng cố định */
+.archive-card:hover .card-bg-img {
+  transform: scale(1.06);
+  filter: grayscale(0%) brightness(0.65);
+}
+
+/* Gradient overlay từ dưới lên — để chữ dễ đọc */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.92) 0%,
+    rgba(0,0,0,0.55) 45%,
+    rgba(0,0,0,0.1) 75%,
+    transparent 100%
+  );
+}
+
+/* Label category — góc trên trái */
+.card-cat-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #b90014;
+  color: #fff;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 5px 12px;
+  border-right: 3px solid #1b1c15;
+  border-bottom: 3px solid #1b1c15;
+  z-index: 10;
+}
+
+/* Khối nội dung dưới */
+.card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 1.1rem 0.9rem;
+  z-index: 10;
+}
+
+/* Tiêu đề — bold, uppercase, trắng */
+.card-thumb-title {
+  font-family: 'Anybody', sans-serif;
+  font-weight: 900;
+  font-size: clamp(0.85rem, 2vw, 1.1rem);
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.8);
+  letter-spacing: -0.01em;
+}
+.archive-card:hover .card-thumb-title { color: #ffb4ac; }
+
+/* Ngày */
+.card-thumb-date {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  color: rgba(255,255,255,0.65);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Dưới dưới tiêu đề: đường kẻ đỏ */
+.card-title-bar {
+  width: 40px;
+  height: 3px;
+  background: #b90014;
+  margin-bottom: 0.5rem;
   flex-shrink: 0;
 }
-.archive-card:hover .card-title { color:#b90014; }
-/* Summary: căn đều 2 bên, cố định 3 dòng */
-.card-summary {
-  font-size:0.85rem; line-height:1.65; color:#1b1c15;
-  text-align: justify; text-justify: inter-word;
-  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
-  min-height: calc(0.85rem * 1.65 * 3);
-  flex-grow: 1;
-}
-.card-link { display:flex; align-items:center; gap:4px; font-family:'Space Mono',monospace; font-size:0.7rem; text-transform:uppercase; color:#b90014; margin-top:1rem; padding-top:0.75rem; border-top:2px solid #1b1c15; flex-shrink:0; }
-.card-link:hover { color:#1b1c15; }
+
 @keyframes spin { to { transform:rotate(360deg); } }
 </style>
 </head>
@@ -212,7 +275,7 @@ function renderFilters(categories) {
 function applyFilter(filter) {
   document.querySelectorAll('.archive-card').forEach(card => {
     const cats = (card.dataset.catSlugs || '').split(',').filter(Boolean);
-    card.style.display = (filter === 'all' || cats.includes(filter)) ? 'flex' : 'none';
+    card.style.display = (filter === 'all' || cats.includes(filter)) ? 'block' : 'none';
   });
 }
 
@@ -223,36 +286,31 @@ function renderGrid() {
     return;
   }
   grid.innerHTML = allPosts.map(p => `
-    <article class="archive-card fade-in-up" data-cat-slugs="${p.catSlugs.join(',')}">
-      <div class="card-img-wrap">
-        <a href="post.html?slug=${p.slug}">
-          <img src="${p.image}" alt="${p.title}" loading="lazy"
-            onerror="this.src='https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=800&auto=format'"/>
-        </a>
+    <a href="post.html?slug=${p.slug}" class="archive-card fade-in-up" data-cat-slugs="${p.catSlugs.join(',')}">
+      <!-- Ảnh nền -->
+      <img class="card-bg-img" src="${p.image}" alt="${p.title}" loading="lazy"
+        onerror="this.src='https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=800&auto=format'"/>
+      <!-- Gradient overlay -->
+      <div class="card-overlay"></div>
+      <!-- Label category -->
+      <span class="card-cat-label">${p.catLabels[0] || 'Blog'}</span>
+      <!-- Nội dung dưới -->
+      <div class="card-content">
+        <div class="card-title-bar"></div>
+        <h2 class="card-thumb-title">${p.title}</h2>
+        <p class="card-thumb-date">${p.date}</p>
       </div>
-      <div class="card-body">
-        <div class="card-meta">
-          <span style="font-family:'Space Mono',monospace;font-size:.65rem;color:#b90014;text-transform:uppercase;font-weight:700;letter-spacing:.05em">${p.catLabels.join(', ')}</span>
-          <span style="font-family:'Space Mono',monospace;font-size:.65rem;text-transform:uppercase;color:#555">${p.date}</span>
-        </div>
-        <a href="post.html?slug=${p.slug}">
-          <h2 class="card-title">${p.title}</h2>
-        </a>
-        <p class="card-summary">${p.summary}</p>
-        <a href="post.html?slug=${p.slug}" class="card-link">
-          Đọc tiếp <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
-        </a>
-      </div>
-    </article>
+    </a>
   `).join('');
+
+  // applyFilter cần handle display:block (vì card là <a>)
+  applyFilter(activeFilter);
 
   // Fade in
   const obs = new IntersectionObserver((entries, o) => {
     entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('is-visible');o.unobserve(e.target);} });
   }, { threshold: 0.05 });
   document.querySelectorAll('.fade-in-up').forEach(el => obs.observe(el));
-
-  applyFilter(activeFilter);
 }
 
 async function fetchPosts() {
